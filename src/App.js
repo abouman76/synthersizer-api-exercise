@@ -5,6 +5,7 @@ import "./App.css";
 function App() {
   const [synthesizers, setSynthesizers] = useState([]);
   const [page, setPage] = useState(0);
+  const [count, setCount] = useState(0);
 
   const showPreviousPage = () => {
     setPage(page - 1);
@@ -14,15 +15,19 @@ function App() {
     setPage(page + 1);
   };
   console.log("page", page);
+
   useEffect(() => {
     async function fetchSynthesizer() {
       // console.log("fetching");
       try {
         const { data } = await axios.get(
-          `https://synthesizer-api.herokuapp.com/api/synths?key=T60ZPHZ-D8V4Z93-MNW77EK-A4DN790&limit=20&offset=${page}`
+          `https://synthesizer-api.herokuapp.com/api/synths?key=T60ZPHZ-D8V4Z93-MNW77EK-A4DN790&limit=20&offset=${
+            page * 20
+          }`
         );
         // console.log("RESPONSE", data.synths);
         setSynthesizers(data.synths);
+        setCount(data.count);
         // setNextPage();
         // setPreviousPage();
       } catch (error) {
@@ -42,10 +47,20 @@ function App() {
       </div>
 
       <div className="buttons">
-        <button className="btn" type="button" onClick={showPreviousPage}>
+        <button
+          className="btn"
+          type="button"
+          onClick={showPreviousPage}
+          disabled={page === 0}
+        >
           Previous
         </button>
-        <button className="btn" type="button" onClick={showNextPage}>
+        <button
+          className="btn"
+          type="button"
+          onClick={showNextPage}
+          disabled={count / 20 < page + 1}
+        >
           Next
         </button>
       </div>

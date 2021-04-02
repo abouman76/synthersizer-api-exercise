@@ -50,3 +50,7 @@
   color: aqua;
   padding: 5px;
 }
+
+:disabled {
+  background-color: darkgrey;
+}

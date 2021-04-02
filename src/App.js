@@ -29,6 +29,19 @@ function App() {
 
   return (
     <>
+      <div className="head-text">
+        <h1>Let's grab some synthersizer date!</h1>
+        <h4>Data from Bernard's Synthersizer API</h4>
+      </div>
+
+      <div className="buttons">
+        <button className="btn" type="button" onClick={() => alert("Previous")}>
+          Previous
+        </button>
+        <button className="btn" type="button" onClick={() => alert("Next")}>
+          Next
+        </button>
+      </div>
       <div className="main-card">
         {synthersizers.map((synthersizer) => {
           console.log("1 SYNTH?", synthersizer);

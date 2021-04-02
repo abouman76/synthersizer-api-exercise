@@ -28,3 +28,25 @@
   width: 450px;
   height: auto;
 }
+
+.head-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  margin: 10px;
+  width: 150px;
+  background-color: black;
+  color: aqua;
+  padding: 5px;
+}
